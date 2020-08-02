@@ -9,18 +9,159 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+
 /* Core CSS required for Ionic components to work properly */
+
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
+
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
+
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+.listing {
+    background-color: #fbfbfb;
+    padding: 30px 30px;
+}
+
+.select-wrap {
+    .selection {
+        margin-bottom: 20px;
+    }
+    ion-label {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    ion-select {
+        padding: 10px 0;
+    }
+    ion-select::part(placeholder),
+    ion-select::part(text) {
+        flex: 0 0 auto;
+    }
+    /* Set the placeholder color and opacity */
+    ion-select::part(placeholder) {
+        color: #20a08a;
+        opacity: 1;
+    }
+}
+
+ion-header {
+    &::after {
+        background-image: none;
+    }
+    &.header-md {
+        &::after {
+            background-image: none;
+        }
+        &.searchbar {
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.06);
+            ion-toolbar {
+                --background: #fff;
+                .button {
+                    --color: #d6861b;
+                }
+            }
+        }
+    }
+    .search-button {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        i {
+            color: #fff;
+            font-size: 20px;
+        }
+    }
+    ion-toolbar {
+        --background: var(--ion-color-primary);
+        -webkit-tap-highlight-color: none;
+        --border: 0;
+        --min-height: 60px;
+        ion-menu-button {
+            color: #fff;
+            i {
+                color: #fff;
+            }
+        }
+        .button {
+            --padding-top: 0px;
+            --padding-bottom: 0px;
+            --padding-start: 16px;
+            --padding-end: 0px;
+            --color: #fff;
+            min-width: max-content;
+            --background: none;
+            font-size: 24px;
+        }
+        .back-button-has-icon-only {
+            --padding-start: 16px;
+            min-width: max-content;
+            --background: none;
+        }
+        ion-title {
+            --color: #fff;
+            font-size: 16px;
+            text-align: center;
+            text-transform: capitalize;
+            --border: 0;
+            line-height: 1.4;
+            width: 100%;
+            &.home-title {
+                margin: 0 auto;
+                left: 0;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 0;
+            }
+            img {
+                display: inline-block;
+            }
+        }
+    }
+    &.white-header {
+        ion-toolbar {
+            --background: #fff;
+            ion-menu-button {
+                color: #fff;
+            }
+            ion-title {
+                --color: #fff;
+            }
+        }
+    }
+    &.left-header {
+        ion-toolbar {
+            ion-title {
+                text-align: left;
+                transform: none;
+                position: static;
+                left: auto;
+                top: auto;
+                i {
+                    margin-right: 5px;
+                    font-size: 24px;
+                    line-height: 1;
+                    display: unset;
+                    vertical-align: middle;
+                    color: red;
+                }
+            }
+        }
+    }
+}
+
+.alert-wrapper {
+    --min-width: 320px !important;
+}

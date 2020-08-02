@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { FLIGHT_FIND_BY_LOCATION, FLIGHT_INFORMATION_GEOG } from '../constant';
-import { LaunchNavigator } from 'plugins/uk.co.workingedge.phonegap.plugin.launchnavigator/uk.co.workingedge.phonegap.plugin.launchnavigator';
+// import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 
 @Component({
   selector: 'app-geographic-stats',
@@ -10,13 +10,16 @@ import { LaunchNavigator } from 'plugins/uk.co.workingedge.phonegap.plugin.launc
 })
 export class GeographicStatsPage implements OnInit {
 
-  constructor(public apiSer: ApiService, public launchNavigator: LaunchNavigator) { }
+  constructor(public apiSer: ApiService) { }
   dataSel:string = 'flight_information_geog';
   apiUrl:string = '';
   dataList = [];
   ngOnInit() {
     this.getDataFromApi();
   }
+  /**
+   * Fetch data from api
+   */
   getDataFromApi () {
     if (this.dataSel == 'flight_information_geog') {
       this.apiUrl = FLIGHT_INFORMATION_GEOG;
@@ -34,11 +37,14 @@ export class GeographicStatsPage implements OnInit {
     })
 
   }
+  /**
+   * Open google map
+   * @param lat latitude
+   * @param long longitude
+   */
   openLatLong(lat, long) {
-    let options = {
-      app:this.launchNavigator.APP.GOOGLE_MAPS
-    }
-    this.launchNavigator.navigate([lat, long], options);
+    
+    window.open('https://www.google.com/maps/search/?api=1&query='+lat+','+long);
   }
   onDataChange() {
     this.getDataFromApi();

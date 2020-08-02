@@ -1,0 +1,38 @@
+.flight-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    margin-bottom: 16px;
+    padding: 16px;
+    color: #272727;
+    .list-info {
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(100% - 50px);
+        align-items: center;
+        ion-label {
+            margin-bottom: 8px;
+        }
+        p {
+            margin: 0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            span {
+                width: calc(100% - 20px);
+            }
+            ion-icon {
+                font-size: 20px;
+                width: 20px;
+                margin-right: 4px;
+            }
+        }
+    }
+    ion-button {
+        margin: 0;
+        padding: 4px;
+        font-size: 10px;
+    }
+  }
