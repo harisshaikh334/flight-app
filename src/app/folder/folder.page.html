@@ -3,19 +3,35 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
+    <ion-title>Accidental Stats</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+   <ion-item>
+    <ion-label>Select Data Type</ion-label>
+    <ion-select [(ngModel)]="dataSel" (ionChange)="onDataChange()" name="data">
+      <ion-select-option value="agg_state_occ">Agg. by the State of Occurrence</ion-select-option>
+      <ion-select-option value="agg_state_operator">Agg. by the State of Operator</ion-select-option>
+      <ion-select-option value="flat_state_occ">Flat by the State of Occurrence</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Select Year</ion-label>
+    <ion-select [(ngModel)]="yearSel" (ionChange)="onYearChange()" name="year">
+      <ion-select-option value="">All</ion-select-option>
+      <ion-select-option *ngFor="let year of yearList" [value]="year">{{year}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+  <ion-list>
+    <ion-item *ngFor="let item of dataList">
+      <ion-label>Year : {{item?.Year}}</ion-label>
+      <p>Accidents {{item?.Accidents}}</p>
+      <p>Fatalities {{item?.Fatalities}}</p>
+      <!-- <p>Fatalities {{item?.Fatalities}}</p>
+      <p>Fatal Accidents {{item?.FatalAccidents}}</p>
+      <p>Departures {{item?.Departures}}</p> -->
+    </ion-item>
+  </ion-list>
 </ion-content>

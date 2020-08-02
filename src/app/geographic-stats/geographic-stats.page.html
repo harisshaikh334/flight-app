@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Geographical Stats</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button>Back</ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label>Select Data Type</ion-label>
+    <ion-select [(ngModel)]="dataSel" (ionChange)="onDataChange()" name="data">
+      <ion-select-option value="flight_information_geog">Flight Information Regions - Geographical</ion-select-option>
+      <ion-select-option value="flight_find_by_location">Flight Information Regions and Elevation - Find by Location</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-list *ngIf="dataSel == 'flight_information_geog'">
+    <ion-item *ngFor="let item of dataList">
+      <ion-label>State Name : {{item?.properties?.StateName}}</ion-label>
+      <p>FIRname {{item?.properties?.StateName}}</p>
+      <p>Lat Long {{item?.properties?.centerLat}} , {{ item?.properties?.centlong}}</p>
+      <ion-button (click)="openLatLong(item?.properties?.centerLat, item?.properties?.centlong)">Open Map</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="dataSel == 'flight_find_by_location'">
+    <ion-item *ngFor="let item of dataList">
+      <p>FIRname {{item?.FIRname}}</p>
+      <p>Lat Long {{item?.latitude}},{{ item?.longitude}}</p>
+      <ion-button (click)="openLatLong(item?.latitude, item?.longitude)">Open Map</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
